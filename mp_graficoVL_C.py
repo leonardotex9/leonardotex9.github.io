@@ -25,7 +25,7 @@ month_dict = {
     12: 'dez'
 }
 
-DT_TODAY = datetime.datetime.today().replace(day = 12)
+DT_TODAY = datetime.datetime.today()
 DT_TODAY_FILE = DT_TODAY.replace(day = DT_TODAY.day - 1 ).strftime('%Y.%m.%d')
 DT_DIA = DT_TODAY.replace(day = DT_TODAY.day - 1 ).strftime('%d')
 DT_MES = DT_TODAY.replace(day = DT_TODAY.day - 1 ).strftime('%m')
@@ -157,11 +157,11 @@ def fix_date(timestamp):
 
 
 def mp_handler(df_loja, df_categ):
-    for fun in df_loja.itertuples():
-        p = Pool(100)
-        p.map(gerar_imagem_vl_loja, [fun])
-        p.close()
-        # p.join()
+    # for fun in df_loja.itertuples():
+    #     p = Pool(100)
+    #     p.map(gerar_imagem_vl_loja, [fun])
+    #     p.close()
+    #     # p.join()
 
     for fun in df_categ.itertuples():
         p = Pool(100)
@@ -285,7 +285,10 @@ def gerar_imagem_vl_loja(fun):
     if str(fil_perfil)[5] == '1':
         cartao_ating_real = cartao_real / cartao_meta_tot
         cartao_ating_ritmo = cartao_meta_acu / cartao_meta_tot
-        cartao_ating_acu = cartao_real / cartao_meta_acu
+        if cartao_meta_acu > 0:
+            cartao_ating_acu = cartao_real / cartao_meta_acu
+        else:
+            cartao_ating_acu = 0
     else:
         cartao_ating_real = 0
         cartao_ating_ritmo = 0
@@ -924,10 +927,11 @@ def gerar_imagem_vl_categ(fun):
     if cdc_meta_tot != 0:
         cdc_ating_real = cdc_real / cdc_meta_tot
         cdc_ating_ritmo = cdc_meta_acu / cdc_meta_tot
+        cdc_ating_acu = cdc_real / cdc_meta_acu
     else:
         cdc_ating_real = 0
         cdc_ating_ritmo = 0
-    cdc_ating_acu = cdc_real / cdc_meta_acu
+        cdc_ating_acu = 0
 
     data = '{:02d}/{:02d}'.format(dia,mes)
 
@@ -1301,7 +1305,7 @@ if __name__ == '__main__':
     df_categ['TT_PROJ'] = df_categ['TT_PROJ'].apply(lambda x: locale.format("%.0f",x, True))
     df_categ['CD_FUN'] = df_categ.CD_FUN.astype(int) + 2100000000
 
-    df_loja = pd.merge(df_categ,df_loja, on='CD_FIL', how= 'left')
+    df_loja = pd.merge(df_categ,df_loja, on='CD_FIL', how= 'left').dropna(subset=['PORTE'])
     porte_loja = re.compile(r'PORTE ')
     df_loja['PORTE_NUMBER'] = df_loja['PORTE'].apply(lambda x: re.sub(porte_loja,'',x))
     df_loja.PORT_META_ACU = df_loja.PORT_META_ACU.fillna(0)  
