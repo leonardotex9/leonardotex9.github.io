@@ -157,11 +157,11 @@ def fix_date(timestamp):
 
 
 def mp_handler(df_loja, df_categ):
-    for fun in df_loja.itertuples():
-        p = Pool(100)
-        p.map(gerar_imagem_vl_loja, [fun])
-        p.close()
-        # p.join()
+    # for fun in df_loja.itertuples():
+    #     p = Pool(100)
+    #     p.map(gerar_imagem_vl_loja, [fun])
+    #     p.close()
+    #     # p.join()
 
     for fun in df_categ.itertuples():
         p = Pool(100)
