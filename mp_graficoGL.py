@@ -25,7 +25,7 @@ month_dict = {
     12: 'dez'
 }
 
-DT_TODAY = datetime.datetime.today()#.replace(day = 12)
+DT_TODAY = datetime.datetime.today()
 DT_TODAY_FILE = DT_TODAY.replace(day = DT_TODAY.day - 1 ).strftime('%Y.%m.%d')
 DT_DIA = DT_TODAY.replace(day = DT_TODAY.day - 1 ).strftime('%d')
 DT_MES = DT_TODAY.replace(day = DT_TODAY.day - 1 ).strftime('%m')
