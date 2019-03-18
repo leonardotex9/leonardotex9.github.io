@@ -173,20 +173,20 @@ def gerar_imagem_glm(fun):
     locale.setlocale(locale.LC_ALL, 'German')
     # CRIAÇÃO DE ATINGIMENTOS
     # Mercantil
-    merc_ating_real = merc_real / merc_meta_tot
-    merc_ating_ritmo = merc_meta_acu / merc_meta_tot
-    merc_ating_acu = merc_real / merc_meta_acu
+    merc_ating_real = int(round((merc_real / merc_meta_tot)*100,3))/100
+    merc_ating_ritmo = int(round((merc_meta_acu / merc_meta_tot)*100,3))/100
+    merc_ating_acu = int(round((merc_real / merc_meta_acu)*100,3))/100
 
     # Serviços
-    serv_ating_real = serv_real / serv_meta_tot
-    serv_ating_ritmo = serv_meta_acu / serv_meta_tot
-    serv_ating_acu = serv_real / serv_meta_acu
+    serv_ating_real = int(round((serv_real / serv_meta_tot)*100,3))/100
+    serv_ating_ritmo = int(round((serv_meta_acu / serv_meta_tot)*100,3))/100
+    serv_ating_acu = int(round((serv_real / serv_meta_acu)*100,3))/100
 
     # CDC
     if str(fil_perfil)[2] == '1':
-        cdc_ating_real = cdc_real / cdc_meta_tot
-        cdc_ating_ritmo = cdc_meta_acu / cdc_meta_tot
-        cdc_ating_acu = cdc_real / cdc_meta_acu
+        cdc_ating_real = int(round((cdc_real / cdc_meta_tot)*100,3))/100
+        cdc_ating_ritmo = int(round((cdc_meta_acu / cdc_meta_tot)*100,3))/100
+        cdc_ating_acu = int(round((cdc_real / cdc_meta_acu)*100,3))/100
     else:
         cdc_ating_real = 0
         cdc_ating_ritmo = 0
@@ -194,9 +194,9 @@ def gerar_imagem_glm(fun):
 
     #Móveis
     if str(fil_perfil)[3] == '1':
-        moveis_ating_real = moveis_real / moveis_meta_tot
-        moveis_ating_ritmo = moveis_meta_acu / moveis_meta_tot
-        moveis_ating_acu = moveis_real / moveis_meta_acu
+        moveis_ating_real = int(round((moveis_real / moveis_meta_tot)*100,3))/100
+        moveis_ating_ritmo = int(round((moveis_meta_acu / moveis_meta_tot)*100,3))/100
+        moveis_ating_acu = int(round((moveis_real / moveis_meta_acu)*100,3))/100
     else:
         moveis_ating_real = 0
         moveis_ating_ritmo = 0
@@ -204,9 +204,9 @@ def gerar_imagem_glm(fun):
 
     #Eletroportáteis
     if str(fil_perfil)[4] == '1':
-        port_ating_real = port_real / port_meta_tot
-        port_ating_ritmo = port_meta_acu / port_meta_tot
-        port_ating_acu = port_real / port_meta_acu
+        port_ating_real = int(round((port_real / port_meta_tot)*100,3))/100
+        port_ating_ritmo = int(round((port_meta_acu / port_meta_tot)*100,3))/100
+        port_ating_acu = int(round((port_real / port_meta_acu)*100,3))/100
     else:
         port_ating_real = 0
         port_ating_ritmo = 0
@@ -214,10 +214,10 @@ def gerar_imagem_glm(fun):
 
     #Cartão
     if str(fil_perfil)[5] == '1':
-        cartao_ating_real = cartao_real / cartao_meta_tot
-        cartao_ating_ritmo = cartao_meta_acu / cartao_meta_tot
+        cartao_ating_real = int(round((cartao_real / cartao_meta_tot)*100,3))/100
+        cartao_ating_ritmo = int(round((cartao_meta_acu / cartao_meta_tot)*100,3))/100
         if cartao_meta_acu > 0:
-            cartao_ating_acu = cartao_real / cartao_meta_acu
+            cartao_ating_acu = int(round((cartao_real / cartao_meta_acu)*100,3))/100
         else:
             cartao_ating_acu = 0
     else:
@@ -226,7 +226,7 @@ def gerar_imagem_glm(fun):
         cartao_ating_acu = 0
 
     #NPS
-    nps_ating_real = float(nps_real / nps_meta_tot)
+    nps_ating_real = float(int(round((nps_real / nps_meta_tot)*100,3))/100)
 
     # COORDENADAS DO GRÁFICO P/ LABELS AUX
 
