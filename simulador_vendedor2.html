@@ -1,0 +1,87 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>Bokeh Plot</title>
+      
+      
+        
+          
+        <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.css" type="text/css" />
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.js"></script>
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="ae76ca72-93bf-45a1-b565-823625b86a0a" data-root-id="1068"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="1069">
+          {"d05b9e93-2bea-4c65-a485-8d66fa9c2712":{"roots":{"references":[{"attributes":{"bar_color":"indianred","callback":null,"end":130,"start":70,"title":"Ating. da Meta de Solu\u00e7\u00e3o","value":100},"id":"1042","type":"Slider"},{"attributes":{"children":[{"id":"1037","type":"Div"},{"id":"1066","type":"WidgetBox"},{"id":"1067","type":"WidgetBox"}]},"id":"1068","type":"Column"},{"attributes":{"bar_color":"firebrick","callback":null,"end":130,"start":70,"title":"Ating. da Meta de Produtos da Loja","value":100},"id":"1039","type":"Slider"},{"attributes":{"callback":null,"placeholder":"meta em R$ (exemplo: 100.000)","title":"Meta de Produtos:"},"id":"1038","type":"TextInput"},{"attributes":{"text":"\n&lt;h2&gt;Simulador de Premia\u00e7\u00e3o do Vendedor&lt;/h2&gt;\n&lt;p&gt;Simule a premia\u00e7\u00e3o preenchendo sua Meta de Produtos e arrastando as r\u00e9guas de atingimento de meta.&lt;/p&gt;\n"},"id":"1037","type":"Div"},{"attributes":{"bar_color":"indianred","callback":null,"end":130,"start":70,"title":"Ating. da Meta de Produtos do Vendedor","value":100},"id":"1040","type":"Slider"},{"attributes":{"callback":null,"icon":null,"label":"-"},"id":"1065","type":"Button"},{"attributes":{"children":[{"id":"1038","type":"TextInput"},{"id":"1039","type":"Slider"},{"id":"1040","type":"Slider"},{"id":"1041","type":"Slider"},{"id":"1042","type":"Slider"}]},"id":"1066","type":"WidgetBox"},{"attributes":{"bar_color":"indianred","callback":null,"end":130,"start":70,"title":"Ating. da Meta de Garantia Estendida","value":100},"id":"1041","type":"Slider"},{"attributes":{"button_type":"danger","callback":null,"icon":null,"label":"Resultado:"},"id":"1064","type":"Button"},{"attributes":{"children":[{"id":"1064","type":"Button"},{"id":"1065","type":"Button"}]},"id":"1067","type":"WidgetBox"}],"root_ids":["1068"]},"title":"Bokeh Application","version":"1.2.0"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('1069').textContent;
+                  var render_items = [{"docid":"d05b9e93-2bea-4c65-a485-8d66fa9c2712","roots":{"1068":"ae76ca72-93bf-45a1-b565-823625b86a0a"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        embed_document(root);
+                        clearInterval(timer);
+                      }
+                      attempts++;
+                      if (attempts > 100) {
+                        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        clearInterval(timer);
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>
