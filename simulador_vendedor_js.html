@@ -1,0 +1,87 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>Bokeh Plot</title>
+      
+      
+        
+          
+        <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.css" type="text/css" />
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.js"></script>
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="dfa77ac5-ff25-4d17-86ab-a6560f662d70" data-root-id="3928"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="3929">
+          {"9dab6f77-b2c9-4827-bedc-2bcefe0f5864":{"roots":{"references":[{"attributes":{"children":[{"id":"3897","type":"TextInput"},{"id":"3898","type":"Slider"},{"id":"3899","type":"Slider"},{"id":"3900","type":"Slider"},{"id":"3901","type":"Slider"}]},"id":"3926","type":"WidgetBox"},{"attributes":{"children":[{"id":"3896","type":"Div"},{"id":"3926","type":"WidgetBox"},{"id":"3927","type":"WidgetBox"}]},"id":"3928","type":"Column"},{"attributes":{"callback":null,"placeholder":"meta em R$ (exemplo: 100.000)","title":"Meta de Produtos:"},"id":"3897","type":"TextInput"},{"attributes":{"bar_color":"indianred","callback":null,"end":130,"js_property_callbacks":{"change:value":[{"id":"3925","type":"CustomJS"}]},"start":70,"title":"Ating. da Meta de Solu\u00e7\u00e3o","value":100},"id":"3901","type":"Slider"},{"attributes":{"bar_color":"indianred","callback":null,"end":130,"js_property_callbacks":{"change:value":[{"id":"3925","type":"CustomJS"}]},"start":70,"title":"Ating. da Meta de Garantia Estendida","value":100},"id":"3900","type":"Slider"},{"attributes":{"children":[{"id":"3923","type":"Button"},{"id":"3924","type":"Button"}]},"id":"3927","type":"WidgetBox"},{"attributes":{"button_type":"danger","callback":null,"icon":null,"label":"Resultado:"},"id":"3923","type":"Button"},{"attributes":{"callback":null,"icon":null,"label":"-"},"id":"3924","type":"Button"},{"attributes":{"text":"\n&lt;h2&gt;Simulador de Premia\u00e7\u00e3o do Vendedor&lt;/h2&gt;\n&lt;p&gt;Simule a premia\u00e7\u00e3o preenchendo sua Meta de Produtos e arrastando as r\u00e9guas de atingimento de meta.&lt;/p&gt;\n"},"id":"3896","type":"Div"},{"attributes":{"bar_color":"firebrick","callback":null,"end":130,"js_property_callbacks":{"change:value":[{"id":"3925","type":"CustomJS"}]},"start":70,"title":"Ating. da Meta de Produtos da Loja","value":100},"id":"3898","type":"Slider"},{"attributes":{"bar_color":"indianred","callback":null,"end":130,"js_property_callbacks":{"change:value":[{"id":"3925","type":"CustomJS"}]},"start":70,"title":"Ating. da Meta de Produtos do Vendedor","value":100},"id":"3899","type":"Slider"},{"attributes":{"args":{"ating_ge_vc":{"id":"3900","type":"Slider"},"ating_prod_fil":{"id":"3898","type":"Slider"},"ating_prod_vc":{"id":"3899","type":"Slider"},"ating_slc_vc":{"id":"3901","type":"Slider"},"button2":{"id":"3924","type":"Button"},"meta_prod":{"id":"3897","type":"TextInput"}},"code":"\n    var meta_prod = meta_prod.value;\n    const prod_fil = ating_prod_fil.value;\n    const prod_vc = ating_prod_vc.value;\n    const ge_vc = ating_ge_vc.value;\n    const slc_vc = ating_slc_vc.value;\n    \n    if (prod_fil &lt; 90 &amp;&amp; prod_vc &lt; 90) {\n        button2.label = \"Vendedor e loja N\u00c3O atingiram 90% da meta de produtos\";\n        \n    } else if (prod_fil &lt; 90 &amp;&amp; prod_vc &gt;= 90) {\n        button2.label = \"Loja N\u00c3O atingiu 90% da meta de produtos\";\n        \n    } else if (prod_fil &gt;= 90 &amp;&amp; prod_vc &lt; 90) {\n        button2.label = \"Vendedor N\u00c3O atingiu 90% da meta de produtos\";\n        \n    } else if (prod_fil &gt;= 90 &amp;&amp; (prod_vc &gt;= 90 &amp;&amp; prod_vc &lt; 100) &amp;&amp; (ge_vc &lt; 100 || slc_vc &lt; 100)) {\n        button2.label = \"Vendedor N\u00c3O atingiu 100% das metas pessoais\";\n        \n    } else if ((prod_fil &gt;= 90) &amp;&amp; (prod_vc &gt;= 90 &amp;&amp; prod_vc &lt; 100) &amp;&amp; (ge_vc &gt;= 100 &amp;&amp; slc_vc &gt;= 100)) {\n        button2.label = \"R$ \".concat(String((meta_prod * (prod_vc / 100) * 0.001).toFixed(2)));\n        \n    } else if ((prod_fil &gt;= 90) &amp;&amp; (prod_vc &gt;= 100) &amp;&amp; (ge_vc &lt; 100 || slc_vc &lt; 100)) {\n        button2.label = \"R$ \".concat(String((meta_prod * (prod_vc / 100) * 0.001).toFixed(2)));\n        \n    } else if ((prod_fil &gt;= 90) &amp;&amp; (prod_vc &gt;= 100) &amp;&amp; (ge_vc &gt;= 100 &amp;&amp; slc_vc &gt;= 100)) {\n        button2.label = \"R$ \".concat(String((meta_prod * (prod_vc / 100) * 0.003).toFixed(2)));\n    }\n"},"id":"3925","type":"CustomJS"}],"root_ids":["3928"]},"title":"Bokeh Application","version":"1.2.0"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('3929').textContent;
+                  var render_items = [{"docid":"9dab6f77-b2c9-4827-bedc-2bcefe0f5864","roots":{"3928":"dfa77ac5-ff25-4d17-86ab-a6560f662d70"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        embed_document(root);
+                        clearInterval(timer);
+                      }
+                      attempts++;
+                      if (attempts > 100) {
+                        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        clearInterval(timer);
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>
